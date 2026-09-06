@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ear Trainer — sluchový tréning hudby</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎧</text></svg>" />
+</head>
+<body>
+  <header class="app-header">
+    <div class="brand">
+      <span class="brand-icon">🎧</span>
+      <h1>Ear Trainer</h1>
+    </div>
+    <button id="back-btn" class="btn btn-secondary hidden">← Späť na menu</button>
+  </header>
+
+  <section class="settings-bar">
+    <label>
+      Stupnica
+      <select id="mode-select">
+        <option value="major">Dur (major)</option>
+        <option value="minor">Mol (minor)</option>
+      </select>
+    </label>
+    <label>
+      Tónina
+      <select id="key-select"></select>
+    </label>
+    <label>
+      Obtiažnosť
+      <select id="difficulty-select">
+        <option value="easy">Ľahká</option>
+        <option value="normal" selected>Stredná</option>
+        <option value="hard">Ťažká</option>
+      </select>
+    </label>
+    <label class="checkbox-label">
+      <input type="checkbox" id="labels-toggle" />
+      Zobraziť názvy tónov na klaviatúre
+    </label>
+  </section>
+
+  <main>
+    <section id="menu-screen">
+      <p class="intro">
+        Vyber si mini-hru a trénuj sluch: rozoznávanie tónov, intervalov a akordov
+        v durových a molových stupniciach. Klaviatúra nižšie je vždy k dispozícii —
+        môžeš si na nej voľne vyskúšať zvuky, alebo na nej odpovedať v hrách, ktoré to vyžadujú.
+      </p>
+      <div id="menu-grid" class="menu-grid"></div>
+    </section>
+
+    <section id="game-screen" class="hidden">
+      <div id="game-container"></div>
+    </section>
+
+    <section class="piano-section">
+      <div id="piano-container"></div>
+    </section>
+  </main>
+
+  <footer class="app-footer">
+    <p>Ear Trainer • cvič sluch priamo v prehliadači, bez inštalácie.</p>
+  </footer>
+
+  <script src="js/theory.js"></script>
+  <script src="js/audio.js"></script>
+  <script src="js/piano.js"></script>
+  <script src="js/staff.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/gameui.js"></script>
+  <script src="js/games/solfege.js"></script>
+  <script src="js/games/intervals.js"></script>
+  <script src="js/games/chordelius.js"></script>
+  <script src="js/games/inversionist.js"></script>
+  <script src="js/games/melodyHunter.js"></script>
+  <script src="js/games/notationist.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

@@ -13,7 +13,10 @@
       <span class="brand-icon">🎧</span>
       <h1>Ear Trainer</h1>
     </div>
-    <button id="back-btn" class="btn btn-secondary hidden">← Späť na menu</button>
+    <div class="header-actions">
+      <button id="stats-btn" class="btn btn-secondary">📊 Štatistiky</button>
+      <button id="back-btn" class="btn btn-secondary hidden">← Späť na menu</button>
+    </div>
   </header>
 
   <section class="settings-bar">
@@ -56,6 +59,10 @@
       <div id="game-container"></div>
     </section>
 
+    <section id="stats-screen" class="hidden">
+      <div id="stats-container"></div>
+    </section>
+
     <section class="piano-section">
       <div id="piano-container"></div>
     </section>
@@ -77,6 +84,7 @@
   <script src="js/games/inversionist.js"></script>
   <script src="js/games/melodyHunter.js"></script>
   <script src="js/games/notationist.js"></script>
+  <script src="js/stats.js"></script>
   <script src="js/app.js"></script>
 </body>
 </html>

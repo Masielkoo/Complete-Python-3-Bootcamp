@@ -118,7 +118,89 @@ main {
 }
 
 .game-header h2 { margin: 0; }
-.game-score { color: var(--muted); font-size: 0.85rem; }
+.game-score {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 14px;
+  color: var(--muted);
+  font-size: 0.85rem;
+  font-variant-numeric: tabular-nums;
+}
+.game-score b { color: var(--text); font-weight: 600; }
+.game-score b.ok { color: var(--good); }
+.game-score b.ko { color: var(--bad); }
+.game-score small { color: var(--muted); }
+
+.header-actions { display: flex; gap: 8px; }
+.btn-danger { background: transparent; border-color: var(--bad); color: var(--bad); }
+.btn-danger:hover { background: var(--bad); color: #200606; }
+.muted { color: var(--muted); }
+
+/* ---------- stats screen ---------- */
+.stats { display: flex; flex-direction: column; gap: 18px; }
+.stats .game-header { align-items: center; }
+.sync-badge { font-size: 0.8rem; color: var(--muted); }
+.sync-cloud { color: var(--good); }
+.sync-error { color: var(--accent-2); }
+
+.stat-tiles {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 12px;
+}
+.stat-tile {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 14px 16px;
+}
+.stat-label { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); }
+.stat-value { font-size: 1.7rem; font-weight: 700; margin: 4px 0 2px; font-variant-numeric: tabular-nums; }
+.stat-sub { font-size: 0.8rem; color: var(--muted); }
+
+.stats-section {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 16px 18px;
+}
+.stats-section h3 { margin: 0 0 12px; font-size: 1rem; color: var(--accent-2); }
+
+.stats-chart { width: 100%; height: auto; display: block; }
+.grid-line { stroke: var(--border); stroke-width: 1; }
+.axis-label { fill: var(--muted); font-size: 11px; }
+.bar-label { fill: var(--text); font-size: 11px; font-variant-numeric: tabular-nums; }
+.bar-correct { fill: var(--accent); }
+.bar-wrong { stroke: var(--accent); stroke-width: 1; }
+.hatch-bg { fill: var(--panel); }
+.hatch-line { stroke: var(--accent); stroke-width: 2; }
+.bar-hit { fill: transparent; }
+.bar-group:hover .bar-correct { fill: var(--accent-2); }
+.bar-group:hover .hatch-line, .bar-group:hover .bar-wrong { stroke: var(--accent-2); }
+
+.chart-legend { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 8px; font-size: 0.8rem; color: var(--muted); }
+.chart-legend span { display: inline-flex; align-items: center; gap: 6px; }
+.sw { display: inline-block; width: 14px; height: 14px; border-radius: 3px; }
+.sw-correct { background: var(--accent); }
+.sw-wrong { border: 1px solid var(--accent); background: repeating-linear-gradient(45deg, var(--accent) 0 2px, transparent 2px 6px); }
+
+.table-wrap { overflow-x: auto; }
+.stats-table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+.stats-table th, .stats-table td { padding: 8px 10px; text-align: left; border-bottom: 1px solid var(--border); }
+.stats-table th { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); font-weight: 600; }
+.stats-table td.num { text-align: right; font-variant-numeric: tabular-nums; }
+.stats-table tbody tr:last-child td { border-bottom: none; }
+.acc-bar { display: inline-block; vertical-align: middle; width: 110px; height: 8px; background: var(--panel-2); border-radius: 4px; overflow: hidden; margin-right: 8px; }
+.acc-fill { height: 100%; background: var(--accent); border-radius: 4px; }
+.acc-text { font-variant-numeric: tabular-nums; }
+
+.weak-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px; }
+.weak-list li { display: flex; gap: 10px; align-items: baseline; padding: 6px 0; border-bottom: 1px solid var(--border); }
+.weak-list li:last-child { border-bottom: none; }
+.weak-game { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); min-width: 100px; }
+.weak-label { flex: 1; }
+.weak-num { font-variant-numeric: tabular-nums; color: var(--accent-2); }
+.weak-num small { color: var(--muted); }
 
 .game-prompt { margin: 14px 0; color: var(--muted); }
 

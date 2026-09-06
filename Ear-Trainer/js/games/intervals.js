@@ -55,7 +55,7 @@
         App.piano.highlight(tonicMidi, 'highlight-correct');
         App.piano.highlight(note.midi, correct ? 'highlight-correct' : 'highlight-wrong');
         ui.showFeedback(correct, correct ? '✔ Správne! ' + correctLabel : '✘ Nesprávne. Bol to ' + correctLabel);
-        ui.recordAnswer(correct);
+        ui.recordAnswer(correct, correctLabel);
         ui.nextBtn.classList.remove('hidden');
       });
 

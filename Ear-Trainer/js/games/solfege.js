@@ -41,7 +41,7 @@
         }
         App.piano.highlight(note.midi, correct ? 'highlight-correct' : 'highlight-wrong');
         ui.showFeedback(correct, correct ? '✔ Správne! To bolo ' + note.solfege : '✘ Nesprávne. Bolo to ' + note.solfege);
-        ui.recordAnswer(correct);
+        ui.recordAnswer(correct, note.solfege);
         ui.nextBtn.classList.remove('hidden');
       });
 

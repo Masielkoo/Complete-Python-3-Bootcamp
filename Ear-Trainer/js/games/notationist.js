@@ -41,7 +41,7 @@
         if (!correct) App.piano.highlight(note.midi, 'highlight-correct');
         Audio2.playNote(note.midi, 0.7, 0.1);
         ui.showFeedback(correct, correct ? '✔ Správne!' : '✘ Nesprávne. Bola to nota ' + note.label);
-        ui.recordAnswer(correct);
+        ui.recordAnswer(correct, note.name);
         ui.nextBtn.classList.remove('hidden');
       });
     }

@@ -54,7 +54,7 @@
         midis.forEach((m) => App.piano.highlight(m, correct ? 'highlight-correct' : 'highlight-wrong'));
         ui.showFeedback(correct,
           (correct ? '✔ Správne! ' : '✘ Nesprávne. ') + 'Bol to ' + triad.roman + ' v ' + INV_CHOICES[inversion].label.toLowerCase());
-        ui.recordAnswer(correct);
+        ui.recordAnswer(correct, INV_CHOICES[inversion].label);
         ui.nextBtn.classList.remove('hidden');
       });
 

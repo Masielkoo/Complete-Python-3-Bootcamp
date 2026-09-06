@@ -53,7 +53,7 @@
         triad.notes.forEach((n) => App.piano.highlight(n.midi, correct ? 'highlight-correct' : 'highlight-wrong'));
         ui.showFeedback(correct,
           (correct ? '✔ Správne! ' : '✘ Nesprávne. ') + 'Bol to akord ' + triad.roman + ' (' + Theory.CHORD_QUALITY_LABEL[triad.quality] + ')');
-        ui.recordAnswer(correct);
+        ui.recordAnswer(correct, Theory.CHORD_QUALITY_LABEL[triad.quality]);
         ui.nextBtn.classList.remove('hidden');
       });
 

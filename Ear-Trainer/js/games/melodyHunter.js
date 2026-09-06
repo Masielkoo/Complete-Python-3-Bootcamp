@@ -47,14 +47,14 @@
           if (position >= current.melody.length) {
             answered = true;
             ui.showFeedback(true, '✔ Výborne! Zahral si celú melódiu správne.');
-            ui.recordAnswer(true);
+            ui.recordAnswer(true, current.melody.length + ' tónov');
             ui.nextBtn.classList.remove('hidden');
           }
         } else {
           App.piano.highlight(midi, 'highlight-wrong');
           answered = true;
           ui.showFeedback(false, '✘ Nesprávne. Skús si melódiu vypočuť znova.');
-          ui.recordAnswer(false);
+          ui.recordAnswer(false, current.melody.length + ' tónov');
           setTimeout(() => {
             current.melody.forEach((n, i) => setTimeout(() => App.piano.highlight(n.midi, 'highlight-correct'), i * 260));
           }, 300);

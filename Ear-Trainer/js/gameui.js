@@ -43,13 +43,19 @@
     let streak = 0;
     function renderScore() {
       const s = Storage2.getStats(gameId);
-      scoreEl.textContent = `Séria: ${streak}  •  Najlepšia séria: ${s.best}  •  Úspešnosť: ${s.total ? Math.round((s.correct / s.total) * 100) : 0}%`;
+      const pct = s.total ? Math.round((s.correct / s.total) * 100) : 0;
+      scoreEl.innerHTML =
+        `<span>Séria <b>${streak}</b></span>` +
+        `<span>Najlepšia <b>${s.best}</b></span>` +
+        `<span>Dnes <b class="ok">✔ ${s.today.c}</b> <b class="ko">✘ ${s.today.w}</b></span>` +
+        `<span>Celkovo <b>${pct}%</b> <small>(${s.correct}/${s.total})</small></span>`;
     }
     renderScore();
 
-    function recordAnswer(correct) {
+    /** itemLabel = the correct answer (interval name, syllable, chord quality…) for per-item stats. */
+    function recordAnswer(correct, itemLabel) {
       streak = correct ? streak + 1 : 0;
-      Storage2.recordResult(gameId, correct, streak);
+      Storage2.recordResult(gameId, correct, streak, itemLabel);
       renderScore();
     }
 

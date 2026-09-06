@@ -38,9 +38,19 @@ Po každej odpovedi sa správne tóny zvýraznia na klaviatúre, takže vidíš 
 
 Klaviatúra (C3–C6) je vždy dole a dá sa na nej voľne hrať.
 
-## Štatistiky
+## Štatistiky (tlačidlo 📊 hore)
 
-Séria, najlepšia séria a úspešnosť sa ukladajú per hra do `localStorage` prehliadača.
+- **Prehľad** – celková úspešnosť, dnešné ✔/✘, počet dní tréningu, séria dní po sebe
+- **Graf za 14 dní** – správne vs. nesprávne odpovede každý deň + úspešnosť dňa
+- **Podľa hry** – ✔ / ✘ / úspešnosť / najlepšia séria
+- **Na čom zapracovať** – konkrétne intervaly, akordy či slabiky s úspešnosťou pod 80 % (od 3 pokusov)
+- záloha do schránky ako JSON, vymazanie štatistík
+
+V hlavičke každej hry vidíš aktuálnu sériu, najlepšiu sériu a dnešné ✔/✘.
+
+Dáta sa ukladajú do `localStorage` prehliadača. Ak stránka beží ako claude.ai Artifact
+s povoleným `db`, rovnaké dáta sa navyše zrkadlia do cloudového úložiska artefaktu,
+takže mobil a PC zdieľajú jednu históriu (spájanie = maximum z oboch strán, nič sa nestratí).
 
 ## Štruktúra
 
@@ -53,7 +63,8 @@ Ear-Trainer/
     ├── audio.js       # Web Audio syntetizátor (žiadne samply/CDN)
     ├── piano.js       # klikateľná klaviatúra
     ├── staff.js       # SVG notová osnova (husľový kľúč)
-    ├── storage.js     # localStorage štatistiky
+    ├── storage.js     # štatistiky: localStorage + voliteľné cloud zrkadlo
+    ├── stats.js       # obrazovka Štatistiky (graf, tabuľka, slabé miesta)
     ├── gameui.js      # spoločná kostra hry (skóre, feedback, tlačidlá)
     ├── app.js         # menu, nastavenia, prepínanie hier
     └── games/         # jedna mini-hra = jeden súbor

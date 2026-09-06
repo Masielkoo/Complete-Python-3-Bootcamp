@@ -78,6 +78,7 @@
     state.currentGameId = gameId;
     document.querySelectorAll('.menu-card').forEach((c) => c.classList.toggle('active', c.dataset.game === gameId));
     document.getElementById('menu-screen').classList.add('hidden');
+    document.getElementById('stats-screen').classList.add('hidden');
     document.getElementById('game-screen').classList.remove('hidden');
     document.getElementById('back-btn').classList.remove('hidden');
 
@@ -90,9 +91,23 @@
     activeGameHandle = config.mount(container, App);
   }
 
+  function openStats() {
+    state.currentGameId = null;
+    if (activeGameHandle && activeGameHandle.destroy) activeGameHandle.destroy();
+    activeGameHandle = null;
+    onNotePlay = function () {};
+    if (pianoApi) pianoApi.clearHighlights();
+    document.getElementById('menu-screen').classList.add('hidden');
+    document.getElementById('game-screen').classList.add('hidden');
+    document.getElementById('stats-screen').classList.remove('hidden');
+    document.getElementById('back-btn').classList.remove('hidden');
+    Stats.render(document.getElementById('stats-container'));
+  }
+
   function backToMenu() {
     document.getElementById('menu-screen').classList.remove('hidden');
     document.getElementById('game-screen').classList.add('hidden');
+    document.getElementById('stats-screen').classList.add('hidden');
     document.getElementById('back-btn').classList.add('hidden');
     if (activeGameHandle && activeGameHandle.destroy) activeGameHandle.destroy();
     activeGameHandle = null;
@@ -139,6 +154,7 @@
     });
 
     document.getElementById('back-btn').addEventListener('click', backToMenu);
+    document.getElementById('stats-btn').addEventListener('click', openStats);
   }
 
   document.addEventListener('DOMContentLoaded', () => {
@@ -147,6 +163,13 @@
     buildMenu();
     wireSettings();
     document.body.addEventListener('pointerdown', Audio2.unlock, { once: true });
+
+    // Cloud mirror of stats (only does something inside a claude.ai Artifact with `db`).
+    Storage2.onChange(() => {
+      const statsScreen = document.getElementById('stats-screen');
+      if (!statsScreen.classList.contains('hidden')) Stats.render(document.getElementById('stats-container'));
+    });
+    Storage2.initSync();
   });
 
   global.App = App;
